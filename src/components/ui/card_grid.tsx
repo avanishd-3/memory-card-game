@@ -89,7 +89,8 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
                                 alt={`${card.title} card`}
                                 className="w-20 h-20 mb-4 mx-auto"
                             />
-                            <CardTitle className="text-center text-lg font-semibold">
+                            {/* w-40 gives fixed width so all titles take up same space -> makes all card padding equal */}
+                            <CardTitle className="text-center text-lg font-semibold w-40"> 
                                 {card.title}
                             </CardTitle>
                         </CardContent>
