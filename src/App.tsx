@@ -24,14 +24,14 @@ function App() {
 
   const handleCorrectCardClick = () => {
     setCurrentScore((prevScore) => (prevScore + 1));
-
-    // If current score is greater than best score, update best score
-    if (currentScore + 1 > bestScore) { // Using currentScore + 1 and not currentScore because React updates state asynchronously
-      setBestScore(currentScore + 1);
-    }
   };
 
+  // Update best score before reset -> this looks better than multiple increments when breaking streak
   const handleIncorrectCardClick = () => {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+
     // Reset current score to 0 if incorrect card is clicked
     setCurrentScore(0);
   };
