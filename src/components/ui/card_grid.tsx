@@ -6,10 +6,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-function CardGrid() {
-    const handleCardClick = () => {
-        alert('Card clicked');
-    };
+function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) {
 
     const numCards = 8; // Number of cards to display
     const cards = Array.from({ length: numCards }, (_, i) => `Card ${i + 1}`);
@@ -19,7 +16,7 @@ function CardGrid() {
             {cards.map((description, index) => (
                 
                 // Want card to be clickable instead of using a button
-                <Card key={index} className="cursor-pointer" onClick={handleCardClick}>
+                <Card key={index} className="cursor-pointer" onClick={incrementCurrentScore}>
                     <CardAction>
                         <CardContent>
                             <CardTitle>{description}</CardTitle>
