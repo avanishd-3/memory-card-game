@@ -4,8 +4,9 @@ import {
     CardContent,
     CardTitle,
 } from "@/components/ui/card";
+import { useState } from "react";
 
-function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) {
+function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentScore: () => void} & {resetCurrentScore: () => void}) {
 
     const numCards = 8; // Number of cards to display
 
@@ -45,6 +46,21 @@ function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) 
         title: getLogoName(logo) // Get logo name from svg path
     }));
 
+    const [usedCards, setUsedCards] = useState([] as string[]);
+
+    function handleClick({ title }: { title: string }) { // Extract title from card data
+
+        // If correct card is clicked, increment score and update used cards list
+        if (!usedCards.includes(title)) {
+            incrementCurrentScore(); // Increment score if card is not used
+            setUsedCards([...usedCards, title]); // Add card to used cards list
+
+        } else { // Reset score and used cards list
+            setUsedCards([]); // Reset used cards if card is already used
+            resetCurrentScore(); // Reset score if card is already used
+        }
+    }
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             {cards.map((card) => (
@@ -52,7 +68,7 @@ function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) 
                 <Card
                     key={card.id}
                     className="cursor-pointer transition-transform duration-200 hover:scale-105 shadow hover:shadow-lg"
-                    onClick={incrementCurrentScore}
+                    onClick={handleClick.bind(null, card)} // Pass card data to handleClick
                 >
                     <CardAction>
                         <CardContent className="flex flex-col items-center">

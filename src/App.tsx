@@ -19,11 +19,21 @@ function ScoreBoard({bestScore, currentScore}: {bestScore: number, currentScore:
 
 function App() {
 
-  const [bestScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
 
   const handleCorrectCardClick = () => {
     setCurrentScore((prevScore) => (prevScore + 1));
+
+    // If current score is greater than best score, update best score
+    if (currentScore + 1 > bestScore) { // Using currentScore + 1 and not currentScore because React updates state asynchronously
+      setBestScore(currentScore + 1);
+    }
+  };
+
+  const handleIncorrectCardClick = () => {
+    // Reset current score to 0 if incorrect card is clicked
+    setCurrentScore(0);
   };
 
   return (
@@ -44,6 +54,7 @@ function App() {
       <div className="flex justify-center mt-8">
         <CardGrid 
          incrementCurrentScore={handleCorrectCardClick}
+         resetCurrentScore={handleIncorrectCardClick}
         />
       </div>
     </>
