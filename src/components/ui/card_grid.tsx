@@ -2,31 +2,68 @@ import {
     Card,
     CardAction,
     CardContent,
-    CardDescription,
     CardTitle,
 } from "@/components/ui/card";
 
 function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) {
 
     const numCards = 8; // Number of cards to display
-    const cards = Array.from({ length: numCards }, (_, i) => `Card ${i + 1}`);
+
+    const logosPaths = [
+        "/Bun.svg",
+        "/Convex.svg",
+        "/JavaScript.svg",
+        "/Next.js.svg",
+        "/Node.js.svg",
+        "/npm.svg",
+        "/React.svg",
+        "/Supabase.svg",
+        "/TanStack.svg", 
+        "/tRPC.svg",
+        "/TypeScript.svg",
+        "/VS Code.svg",
+        "/Vite.svg",
+    ]
+
+    function getRandomLogos(num: number): string[] {
+        // Shuffle the logos and return the first num elements
+        const shuffled = logosPaths.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, num);
+    }
+
+    function getLogoName(logoPath: string): string {
+        // Extract the logo name from the path
+        return logoPath.split('/').pop()?.replace('.svg', '') || '';
+    }
+
+    // Assign each card a random logo svg from assets (shuffling makes sure no duplicate logos)
+    const selectedLogos = getRandomLogos(numCards);
+
+    const cards = selectedLogos.map((logo) => ({
+        id: crypto.randomUUID(),
+        logo: logo,
+        title: getLogoName(logo) // Get logo name from svg path
+    }));
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-            {cards.map((description, index) => (
-                
+            {cards.map((card) => (
                 // Want card to be clickable instead of using a button
                 <Card
-                    key={index}
+                    key={card.id}
                     className="cursor-pointer transition-transform duration-200 hover:scale-105 shadow hover:shadow-lg"
                     onClick={incrementCurrentScore}
                 >
                     <CardAction>
-                        <CardContent>
-                            <CardTitle>{description}</CardTitle>
-                            <CardDescription>
-                                This is a description for {description}.
-                            </CardDescription>
+                        <CardContent className="flex flex-col items-center">
+                            <img
+                                src={card.logo}
+                                alt={`${card.title} card`}
+                                className="w-20 h-20 mb-4 mx-auto"
+                            />
+                            <CardTitle className="text-center text-lg font-semibold">
+                                {card.title}
+                            </CardTitle>
                         </CardContent>
                     </CardAction>
                 </Card>
