@@ -10,32 +10,33 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
 
     const numCards = 8; // Number of cards to display
 
+    // Keep the same as public order
+    // If using server, just read from /public instead of hardcoding paths
+    // But using server prevents hosting on GitHub Pages
     const logosPaths = [
         "/Bun.svg",
         "/Convex.svg",
+        "/Electron.svg",
+        "/Fresh.svg",
+        "/Hono.svg",
         "/JavaScript.svg",
         "/Next.js.svg",
         "/Node.js.svg",
         "/npm.svg",
+        "/Playwright.svg",
+        "/PostgreSQL.svg",
         "/React.svg",
         "/Supabase.svg",
-        "/TanStack.svg", 
+        "/Svelte.svg",
+        "/Tailwind.svg",
+        "/TanStack.svg",
         "/tRPC.svg",
         "/TypeScript.svg",
-        "/VS Code.svg",
         "/Vite.svg",
-        "/Tailwind.svg",
-        "/Zod.svg",
-        "/Svelte.svg",
         "/Vitest.svg",
-        "/Hono.svg",
+        "/VS Code.svg",
         "/Vue.svg",
-        "/PostgreSQL.svg",
-        "/Electron.svg",
-        "/Fresh.svg",
-        "/Playwright.svg",
-
-        
+        "/Zod.svg",
     ]
 
     function getRandomLogos(num: number): string[] {
