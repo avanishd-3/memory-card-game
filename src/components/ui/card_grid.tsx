@@ -16,7 +16,11 @@ function CardGrid({incrementCurrentScore}: {incrementCurrentScore: () => void}) 
             {cards.map((description, index) => (
                 
                 // Want card to be clickable instead of using a button
-                <Card key={index} className="cursor-pointer" onClick={incrementCurrentScore}>
+                <Card
+                    key={index}
+                    className="cursor-pointer transition-transform duration-200 hover:scale-105 shadow hover:shadow-lg"
+                    onClick={incrementCurrentScore}
+                >
                     <CardAction>
                         <CardContent>
                             <CardTitle>{description}</CardTitle>
