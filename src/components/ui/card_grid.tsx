@@ -14,29 +14,29 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
     // If using server, just read from /public instead of hardcoding paths
     // But using server prevents hosting on GitHub Pages
     const logoPaths = [
-        "/Bun.svg",
-        "/Convex.svg",
-        "/Electron.svg",
-        "/Fresh.svg",
-        "/Hono.svg",
-        "/JavaScript.svg",
-        "/Next.js.svg",
-        "/Node.js.svg",
-        "/npm.svg",
-        "/Playwright.svg",
-        "/PostgreSQL.svg",
-        "/React.svg",
-        "/Supabase.svg",
-        "/Svelte.svg",
-        "/Tailwind.svg",
-        "/TanStack.svg",
-        "/tRPC.svg",
-        "/TypeScript.svg",
-        "/Vite.svg",
-        "/Vitest.svg",
-        "/VS Code.svg",
-        "/Vue.svg",
-        "/Zod.svg",
+        "Bun.svg",
+        "Convex.svg",
+        "Electron.svg",
+        "Fresh.svg",
+        "Hono.svg",
+        "JavaScript.svg",
+        "Next.js.svg",
+        "Node.js.svg",
+        "npm.svg",
+        "Playwright.svg",
+        "PostgreSQL.svg",
+        "React.svg",
+        "Supabase.svg",
+        "Svelte.svg",
+        "Tailwind.svg",
+        "TanStack.svg",
+        "tRPC.svg",
+        "TypeScript.svg",
+        "Vite.svg",
+        "Vitest.svg",
+        "VS Code.svg",
+        "Vue.svg",
+        "Zod.svg",
     ]
 
     function getRandomLogos(num: number): string[] {
@@ -86,7 +86,8 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
                     <CardAction>
                         <CardContent className="flex flex-col items-center">
                             <img
-                                src={card.logo}
+                                // Base URL will be / for dev and use homepage url for production
+                                src={`${import.meta.env.BASE_URL}${card.logo}`} // So images work on GitHub Pages
                                 alt={`${card.title} card`}
                                 className="w-20 h-20 mb-4 mx-auto"
                             />
