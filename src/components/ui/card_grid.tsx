@@ -13,7 +13,7 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
     // Keep the same as public order
     // If using server, just read from /public instead of hardcoding paths
     // But using server prevents hosting on GitHub Pages
-    const logosPaths = [
+    const logoPaths = [
         "/Bun.svg",
         "/Convex.svg",
         "/Electron.svg",
@@ -41,7 +41,7 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
 
     function getRandomLogos(num: number): string[] {
         // Shuffle the logos and return the first num elements
-        const shuffled = logosPaths.sort(() => 0.5 - Math.random());
+        const shuffled = logoPaths.sort(() => 0.5 - Math.random());
         return shuffled.slice(0, num);
     }
 
