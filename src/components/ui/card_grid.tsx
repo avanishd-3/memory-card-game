@@ -34,7 +34,7 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
 
     function getLogoName(logoPath: string): string {
         // Extract the logo name from the path
-        return logoPath.split('/').pop()?.replace('.svg', '') || '';
+        return logoPath.split('/').pop()?.replace('.svg', '') ?? '';
     }
 
     // Assign each card a random logo svg from assets (shuffling makes sure no duplicate logos)
