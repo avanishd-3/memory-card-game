@@ -24,6 +24,18 @@ function CardGrid({incrementCurrentScore, resetCurrentScore}: {incrementCurrentS
         "/TypeScript.svg",
         "/VS Code.svg",
         "/Vite.svg",
+        "/Tailwind.svg",
+        "/Zod.svg",
+        "/Svelte.svg",
+        "/Vitest.svg",
+        "/Hono.svg",
+        "/Vue.svg",
+        "/PostgreSQL.svg",
+        "/Electron.svg",
+        "/Fresh.svg",
+        "/Playwright.svg",
+
+        
     ]
 
     function getRandomLogos(num: number): string[] {
